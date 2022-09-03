@@ -42,7 +42,7 @@ object AppModule {
                 addConverterFactory(GsonConverterFactory.create())
                 client(getHttpLogClientWithToken())
                 build()
-            }.create()
+            }.create(ApiService::class.java)
 
 
     /*@Singleton
