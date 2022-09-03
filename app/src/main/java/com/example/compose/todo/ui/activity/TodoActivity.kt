@@ -134,17 +134,12 @@ class TodoActivity: ComponentActivity() {
     }
 
     private fun insert(title: MutableState<String>,description: MutableState<String>){
-        lifecycleScope.launch {
-            /*repeatOnLifecycle(Lifecycle.State.STARTED){
-
-            }*/
-
+        lifecycleScope.launchWhenStarted {
             if(!TextUtils.isEmpty(title.value) && !TextUtils.isEmpty(description.value)){
                 viewModel.insert(
                     Todo(
                         title.value,
                         description.value,
-                        getUniqueUuid()
                     )
                 )
                 Toast.makeText(this@TodoActivity,"Inserted...", Toast.LENGTH_SHORT).show()
